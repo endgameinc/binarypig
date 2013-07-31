@@ -1,0 +1,52 @@
+<!--
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements. See the NOTICE file distributed with this
+# work for additional information regarding copyright ownership. The ASF
+# licenses this file to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations under
+# the License.
+#
+#  Copyright 2013 Endgame Inc.
+-->
+{% extends "base.html" %}
+
+{% block title %} Binary Pig: Detail view of {{ event_id }} {%endblock%}
+{% block content %}
+<div class="container">
+<div class="row">
+  <h4><a href="/detail/{{ event_id }}.json">RAW JSON document</a></h4>
+  {% for search_type, rows in data %}
+  <table border="0" class="table table-condensed table-striped">
+      <tr>
+      <td><h3><a href="/search?search_type={{search_type}}&term=*">{{ search_type }}</a></h3>
+      <a href="/detail/{{ event_id }}.json?type={{search_type}}">RAW JSON for {{search_type}}</a></td>
+      <td>&nbsp;</td>
+      </tr>
+    {% for name, value, fieldname in rows %}
+        {% if fieldname == "__break__" %}
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td><b>{{ fieldname }}</b></td>
+          <td><a href="/search?search_type={{search_type}}&term={{fieldname}}:%22{{value}}%22">{{ value|truncatechars:64 }}</a></td>
+        </tr>
+        {% endif %}
+        
+    {% endfor %}
+  </table>
+  {% endfor %}
+
+</div> <!-- row -->
+</div> <!-- container -->
+{% endblock content%}

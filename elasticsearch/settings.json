@@ -1,0 +1,57 @@
+{
+  "template": "binarypig", 
+  "settings": {
+      "number_of_replicas": 0,
+      "number_of_shards": 1,
+      "store.compress": { "stored": true, "tv": true },
+      "analysis": {
+        "tokenizer": {
+          "nGramTokenizer": {
+            "type": "nGram",
+            "min_gram": 2,
+            "max_gram": 8
+          }
+        },
+        "analyzer": {
+          "default_index": {
+            "type": "custom",
+            "tokenizer": "nGramTokenizer",
+            "filter": "lowercase"
+          },
+          "default_search": {
+            "type": "custom",
+            "tokenizer": "nGramTokenizer",
+            "filter": "lowercase"
+          },
+          "LowercaseAnalyzer": {
+            "type": "custom",
+            "tokenizer": "keyword",
+            "filter": "lowercase"
+          },
+          "AutoAnalyzer": {
+            "type": "custom",
+            "tokenizer": "nGramTokenizer",
+            "filter": "lowercase"
+          }
+        }
+     }
+  },
+  "mappings" : {
+    "_default_": {
+      "dynamic_templates" : [ {
+          "string_template" : {
+            "mapping" : {
+              "index" : "not_analyzed",
+              "type" : "string"
+            },
+            "match" : "*",
+            "match_mapping_type" : "string"
+          }
+       } ],
+       "_all" : {
+         "enabled" : true,
+         "index": "analyzed"
+      }
+    }
+  }
+}

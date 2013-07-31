@@ -1,0 +1,5 @@
+Django==1.4.3
+requests==1.1.0
+-e git://github.com/aparo/pyes.git@6ceeb7957fbc80bd1ba7a27168124c74dbf7d859#egg=pyes-dev
+MySQL-python==1.2.3
+jsonlib2==1.5.2

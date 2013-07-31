@@ -1,0 +1,24 @@
+*.class
+*.swp
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+/binarypig/target/
+/binarypig/.classpath
+/binarypig/.project
+/binarypig/.settings
+dummy
+
+/src/
+lib/
+include/
+bin/
+local/
+lib64
+*.pyc
+local_settings.py
+django-project/.Python
+django-project/src

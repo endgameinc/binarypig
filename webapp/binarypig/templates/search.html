@@ -1,0 +1,96 @@
+<!--
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements. See the NOTICE file distributed with this
+# work for additional information regarding copyright ownership. The ASF
+# licenses this file to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations under
+# the License.
+#
+#  Copyright 2013 Endgame Inc.
+-->
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %} Binary Pig: Free Text Search {%endblock%}
+
+{% block content %}
+  <!-- search form -->
+  <div class="row-fluid">
+      <div class="span12">
+      <div class="row-fluid">
+          <div class="span2"></div>
+          <div class="span8">
+          <form>
+            <fieldset>
+              <legend>Search</legend>
+              <input type="text" class="input-medium span8" name="term" {% if term %}value="{{ term }}"{% else %}placeholder="{{ search_type }}" {% endif %}>
+              <select name="max" class="span2">
+                    <option value="50"    {% if max == 50 %}selected{% endif %}>50 max results</option>
+                    <option value="100"   {% if max == 100 %}selected{% endif %}>100 max results</option>
+                    <option value="500"   {% if max == 500 %}selected{% endif %}>500 max results</option>
+                    <option value="1000"  {% if max == 1000 %}selected{% endif %}>1K max results</option>
+                    <option value="10000" {% if max == 10000 %}selected{% endif %}>10K max results</option>
+              </select>
+              <button type="submit" class="btn">Search</button>
+            </fieldset>
+          </form>
+          </div>
+          <div class="span2"></div>
+      </div>
+
+  <!-- results table -->
+  <div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
+    {% if results %}
+    Showing <b>{{results|length}}</b> of <b>{{ count|intcomma}}</b> results for <b>{{term}}</b>{% if search_type %} and <b>type:{{search_type}}</b>{% endif %}
+    <table class="table table-hover table-bordered table-condensed results-table">
+      {% for result in results %}
+        <tr>
+          <table>
+            <tr>
+              <td><a href="/detail/{{result.name}}">{{result.name}}</a> <b>[<a href="/search?search_type={{result.type}}&term=*">{{result.type}}</a>]</b></td>
+            </tr>
+            {% for name,value,fieldname in result.render %}
+              <tr><td><b>{{name}}:</b> <a href="?search_type={{result.type}}&term={{term}}+{{fieldname}}:%22{{value}}%22&max=50">{{value}}</a></td></tr>
+            {% endfor %}
+            <tr>&nbsp;</tr>
+          </table>
+        </tr>
+      {% endfor %}
+    </table>
+    {% elif error %}
+      <div class="alert alert-error">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h4>Lucene query error:</h4> 
+           Please verify your syntax. Error was "{{ error }}"
+      </div>
+    {% endif %}
+  </div>
+  <div class="span2"></div>
+  </div>
+</div>
+  {% endblock content%}
+
+{% block endofbody %}
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('table').dataTable( {
+            "sScrollY": "400px",
+            "bPaginate": false,
+            "bScrollCollapse": true,
+            "bSort":false,
+            "bFilter": false
+        } );
+    } );
+</script>
+{% endblock endofbody %}
+

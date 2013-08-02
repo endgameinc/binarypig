@@ -29,7 +29,7 @@ See pig scripts in "examples" directory.
 
     # create your mysql DB
     mysql
-    mysql> create database bianrypig;
+    mysql> create database binarypig;
 
     virtualenv env
     . env/bin/activate

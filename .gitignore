@@ -15,7 +15,6 @@ dummy
 /src/
 lib/
 include/
-bin/
 local/
 lib64
 *.pyc

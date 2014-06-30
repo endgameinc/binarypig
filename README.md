@@ -50,6 +50,53 @@ Some issues we encountered when running python based binarypig pig jobs
 On Centos, if you have SELinux running and you disable it, you must restart arbtd or many/all of
 the python processes will hang and provide no output.
 
+## Getting up and Running with Vagrant
+
+This is a mini howto on getting Binary Pig up and running on an Ubuntu 14.04 VM running over Vagrant.
+
+Versions
+ - Ubuntu 14.04
+ - hadoop 1.2.1
+ - pig 0.12.1
+ - Elasticsearch 1.2.1
+
+Steps:
+
+    # From workstation
+    $ git clone <repo>
+    $ cd binarypig
+    $ vagrant up
+    $ vagrant ssh
+
+    # now logged into VM
+    $ sudo su - 
+    $ cd /vagrant/
+    $ ./install-ubuntu.sh
+
+    # press <ENTER> when asked
+
+    # agree to Oracle Java license when asked
+    
+    # type "yes" when asked if you want to ssh into localhost
+
+    # enter password for root user of mysql when asked (MySQL installation)
+
+    # enter password for root user of mysql when asked (Django app install)
+
+    # walk through the django admin user creation:
+    #   You just installed Django's auth system, which means you don't have any superusers defined.
+    #   Would you like to create one now? (yes/no): yes
+    #   Username (leave blank to use 'root'): 
+    #   E-mail address: YOU@gmail.com
+    #   Password: 
+    #   Password (again): 
+    #   Superuser created successfully.
+
+Now run the examples (Note: this is still a **Work in Progress**)
+
+    $ ./run_examples.sh
+
+
 [Reference](http://stackoverflow.com/questions/13790475/python-wont-exit-when-called-with-absolute-path-from-cron-or-subshell)
 
 ## License

@@ -21,3 +21,8 @@ lib64
 local_settings.py
 django-project/.Python
 django-project/src
+ 
+/.vagrant/
+/packages/*.deb
+/packages/*.tar.gz
+

@@ -225,3 +225,6 @@ echo ""
 echo "    cd /opt/binarypig/webapp"
 echo "    . env/bin/activate"
 echo "    ./manage.py runserver 0.0.0.0:8000"
+echo ""
+echo "After running the above, you can visit http://10.254.254.100:8000/search/ in your web browser"
+

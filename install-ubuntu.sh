@@ -220,5 +220,8 @@ echo 'create database binarypig;' | mysql -p --password=$DBPASS
 
  ./manage.py syncdb
 
- # TODO make this a background process
- ./manage.py runserver 0.0.0.0:8000
+echo "Install complete!  Run this to start the dev webserver."
+echo ""
+echo "    cd /opt/binarypig/webapp"
+echo "    . env/bin/activate"
+echo "    ./manage.py runserver 0.0.0.0:8000"

@@ -56,8 +56,8 @@ This is a mini howto on getting Binary Pig up and running on an Ubuntu 14.04 VM 
 
 Versions
  - Ubuntu 14.04
- - hadoop 1.2.1
- - pig 0.12.1
+ - Hadoop 1.2.1
+ - Pig 0.12.1
  - Elasticsearch 1.2.1
 
 Steps:

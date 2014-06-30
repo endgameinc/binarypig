@@ -92,8 +92,11 @@ Steps:
     #   Password (again): 
     #   Superuser created successfully.
 
-Now run the examples (Note: this is still a **Work in Progress**)
+Now run the examples (Note: this is still a **Work in Progress**).  This will launch a series of pig jobs that
+execute various BinaryPig scripts from the examples directory.
 
+    # still from VM
+    $ cd /vagrant/
     $ ./run_examples.sh
 
 

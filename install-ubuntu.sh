@@ -42,6 +42,7 @@ apt-get install oracle-java7-set-default
 # Install ES
 #
 dpkg -i $PACKAGE_DIR/elasticsearch-1.2.1.deb 
+mkdir /usr/share/elasticsearch/plugins
 sed -i'.orig' "s/^.*cluster.name.*/cluster.name: ${ES_CLUSTERNAME}/" /etc/elasticsearch/elasticsearch.yml
 update-rc.d elasticsearch defaults 95 10
 /etc/init.d/elasticsearch start
@@ -132,9 +133,9 @@ pip install yara
 apt-get install -y clamav
 
 # hasher
-pip install pefile==1.2.10-114
-pip install anyjson==0.3.3
-pip install bitstring==3.1.1
+pip install bitstring
+pip install pefile
+pip install anyjson
 
 # peframe
 cd /opt/

@@ -50,6 +50,8 @@ Some issues we encountered when running python based binarypig pig jobs
 On Centos, if you have SELinux running and you disable it, you must restart arbtd or many/all of
 the python processes will hang and provide no output.
 
+[Reference](http://stackoverflow.com/questions/13790475/python-wont-exit-when-called-with-absolute-path-from-cron-or-subshell)
+
 ## Getting up and Running with Vagrant
 
 This is a mini howto on getting Binary Pig up and running on an Ubuntu 14.04 VM running over Vagrant.
@@ -99,8 +101,6 @@ execute various BinaryPig scripts from the examples directory.
     $ cd /vagrant/
     $ ./run_examples.sh
 
-
-[Reference](http://stackoverflow.com/questions/13790475/python-wont-exit-when-called-with-absolute-path-from-cron-or-subshell)
 
 ## License
 

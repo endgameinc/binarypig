@@ -27,17 +27,7 @@
 
 register 'binarypig/target/binarypig-1.0-SNAPSHOT-jar-with-dependencies.jar';
 register 'lib/wonderdog-1.0-SNAPSHOT.jar'
-register /home/hadoop/elasticsearch-0.20.1/lib/elasticsearch-0.20.1.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/jna-3.3.0.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/jts-1.12.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/log4j-1.2.17.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/lucene-analyzers-3.6.1.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/lucene-core-3.6.1.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/lucene-highlighter-3.6.1.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/lucene-memory-3.6.1.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/lucene-queries-3.6.1.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/snappy-java-1.0.4.1.jar;
-register /home/hadoop/elasticsearch-0.20.1/lib/spatial4j-0.3.jar;
+register /usr/share/elasticsearch/lib/*.jar;
 
 SET mapred.map.tasks.speculative.execution false;
 SET mapred.job.reuse.jvm.num.tasks         1

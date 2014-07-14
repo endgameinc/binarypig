@@ -73,7 +73,7 @@ Steps:
     # now logged into VM
     $ sudo su - 
     $ cd /vagrant/
-    $ ./install-ubuntu.sh
+    $ ./install-ubuntu-vagrant.sh
 
     # press <ENTER> when asked
 
